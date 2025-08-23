@@ -1,0 +1,36 @@
+{
+  "name": "audio-stem-separator-api",
+  "version": "1.0.0",
+  "description": "Node.js API integration for Audio Stem Separator",
+  "main": "examples/nodejs_integration.js",
+  "scripts": {
+    "start": "node examples/nodejs_integration.js",
+    "dev": "nodemon examples/nodejs_integration.js",
+    "test": "jest",
+    "setup": "npm install"
+  },
+  "keywords": [
+    "audio",
+    "stem-separation",
+    "ai",
+    "music",
+    "demucs",
+    "openunmix",
+    "api"
+  ],
+  "author": "Sergie Code",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "multer": "^1.4.5",
+    "cors": "^2.8.5",
+    "socket.io": "^4.7.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1",
+    "jest": "^29.0.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

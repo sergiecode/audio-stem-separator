@@ -1,0 +1,30 @@
+# Core dependencies for audio processing and AI models
+torch>=2.0.0
+torchaudio>=2.0.0
+demucs>=4.0.0
+openunmix>=1.0.0
+
+# Audio processing libraries
+librosa>=0.10.0
+soundfile>=0.12.1
+pydub>=0.25.1
+
+# Utility libraries
+numpy>=1.21.0
+scipy>=1.9.0
+tqdm>=4.64.0
+
+# CLI and argument parsing
+argparse
+pathlib
+
+# For JSON output and logging
+json5>=0.9.0
+
+# Optional: For advanced audio format support
+ffmpeg-python>=0.2.0
+
+# Development dependencies (optional)
+pytest>=7.0.0
+black>=22.0.0
+flake8>=5.0.0
