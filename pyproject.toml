@@ -1,0 +1,39 @@
+# Pytest Configuration for Audio Stem Separator
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = [
+    "-ra",
+    "--strict-markers",
+    "--strict-config",
+    "--showlocals",
+    "--tb=short"
+]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+
+markers = [
+    "unit: Unit tests for individual components",
+    "integration: Integration tests with audio processing",
+    "performance: Performance and benchmarking tests", 
+    "cli: Command line interface tests",
+    "gpu: Tests that require GPU",
+    "slow: Tests that take more than 30 seconds",
+    "audio_files: Tests that require audio file creation"
+]
+
+filterwarnings = [
+    "ignore::UserWarning",
+    "ignore::DeprecationWarning"
+]
+
+# Test discovery
+norecursedirs = [
+    ".git",
+    ".pytest_cache", 
+    "*.egg",
+    "build",
+    "dist"
+]

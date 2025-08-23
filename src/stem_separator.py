@@ -7,8 +7,6 @@ Demucs and Open-Unmix models.
 Created by Sergie Code - Software Engineer & Programming Educator
 """
 
-import os
-import sys
 import time
 import logging
 from pathlib import Path
@@ -70,7 +68,7 @@ class StemSeparator:
     
     def _setup_device(self, device: Optional[str] = None) -> str:
         """Setup and return the appropriate device for processing."""
-        if device:
+        if device and device != "auto":
             return device
         
         if torch.cuda.is_available():
@@ -248,26 +246,22 @@ class StemSeparator:
         """Separate audio using Open-Unmix model."""
         logger.info("Separating with Open-Unmix...")
         
-        # Convert tensor to numpy for Open-Unmix
-        audio_np = audio.squeeze().numpy()
-        
         try:
-            # Use Open-Unmix predict function
+            # Use Open-Unmix predict function (expects torch tensor)
             estimates = predict.separate(
-                audio_np,
-                model_name=self.model,
-                device=self.device,
-                sample_rate=sample_rate
+                audio,
+                rate=sample_rate,
+                model_str_or_path=self.model_variant or 'umxl',
+                device=self.device
             )
             
-            # Convert back to tensors
+            # Convert to our expected format
             stems = {}
             stem_names = self.STEM_NAMES['openunmix']
             
             for i, name in enumerate(stem_names):
                 if name in estimates:
-                    stem_data = torch.from_numpy(estimates[name]).float()
-                    stems[name] = stem_data
+                    stems[name] = estimates[name]
             
             return stems
             
@@ -291,7 +285,7 @@ class StemSeparator:
                     stem_data = torch.mean(stem_data, dim=0)
                 
                 # Convert to numpy and ensure it's in the right range
-                stem_np = stem_data.numpy().astype(np.float32)
+                stem_np = stem_data.detach().cpu().numpy().astype(np.float32)
                 
                 # Normalize to prevent clipping
                 if np.max(np.abs(stem_np)) > 1.0:
