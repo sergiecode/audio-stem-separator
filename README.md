@@ -2,7 +2,7 @@
 
 A Python-based audio stem separation tool that uses state-of-the-art AI models (Demucs and Open-Unmix) to separate music tracks into individual stems: vocals, drums, bass, and other instruments.
 
-Created by **Sergie Code** - Software Engineer & Programming Educator
+Created by **Sergie Code** - Softwfare Engineer & Programming Educator
 
 ## Purpose
 
@@ -233,10 +233,6 @@ pip install torch torchvision torchaudio --index-url https://download.pytorch.or
 
 This project is part of Sergie Code's educational content. Feel free to contribute improvements or report issues!
 
-## License
-
-MIT License - Feel free to use in your projects and tutorials.
-
 ---
 
 **Created by Sergie Code** - Teaching programming and AI tools for musicians
@@ -255,4 +251,5 @@ MIT License - Feel free to use in your projects and tutorials.
 - 🕊️Twitter: https://twitter.com/sergiecode
 
 - 🧵Threads: https://www.threads.net/@sergiecode
+
 
